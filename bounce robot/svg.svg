@@ -1,0 +1,29 @@
+<svg width="900" height="944" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+ <defs>
+  <clipPath id="__lottie_element_2">
+   <rect width="900" height="944" x="0" y="0" id="svg_1"/>
+  </clipPath>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g clip-path="url(#__lottie_element_2)" id="svg_2">
+   <g transform="matrix(1 0 0 1 322 482)" display=" block" id="svg_3">
+    <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; 0 -20; 0 0" dur="1s" repeatCount="indefinite"/>
+    <path fill-opacity="0" stroke-miterlimit="4" stroke="rgb(251,251,251)" stroke-width="15" d="m-6.46154,183.3077c0,-77.27 62.73,-140 140,-140c0,0 20,0 20,0c77.27,0 140,62.73 140,140c0,0 0,20 0,20c0,77.27 -62.73,140 -140,140c0,0 -20,0 -20,0c-77.27,0 -140,-62.73 -140,-140c0,0 0,-20 0,-20z" id="svg_4"/>
+    <path fill-rule="evenodd" fill="rgb(161,167,223)" d="m-6.46154,183.3077c0,-77.27 62.73,-140 140,-140c0,0 20,0 20,0c77.27,0 140,62.73 140,140c0,0 0,20 0,20c0,77.27 -62.73,140 -140,140c0,0 -20,0 -20,0c-77.27,0 -140,-62.73 -140,-140c0,0 0,-20 0,-20z" id="svg_5"/>
+   </g>
+   <g transform="matrix(1 0 0 1 384 521)" display=" block" id="svg_6">
+    <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; 0 -20; 0 0" dur="1s" repeatCount="indefinite"/>
+    <path fill-rule="evenodd" fill="rgb(255,255,255)" d="m-6.46154,65.3077c0,-12.14 9.86,-22 22,-22c0,0 4,0 4,0c12.14,0 22,9.86 22,22c0,0 0,4 0,4c0,12.14 -9.86,22 -22,22c0,0 -4,0 -4,0c-12.14,0 -22,-9.86 -22,-22c0,0 0,-4 0,-4z" id="svg_7"/>
+   </g>
+   <g transform="matrix(1 0 0 1 472 604)" display=" block" id="svg_8">
+    <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; 0 -20; 0 0" dur="1s" repeatCount="indefinite"/>
+    <path fill-rule="evenodd" fill="rgb(251,251,251)" d="m-6.46154,46.3077c0,-1.66 1.34,-3 3,-3c0,0 3,0 3,0c1.66,0 3,1.34 3,3c0,0 0,33 0,33c0,1.66 -1.34,3 -3,3c0,0 -3,0 -3,0c-1.66,0 -3,-1.34 -3,-3c0,0 0,-33 0,-33z" id="svg_9"/>
+   </g>
+   <g transform="matrix(1 0 0 1 535 604)" display=" block" id="svg_10">
+    <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; 0 -20; 0 0" dur="1s" repeatCount="indefinite"/>
+    <path fill-rule="evenodd" fill="rgb(251,251,251)" d="m-6.46154,46.3077c0,-1.66 1.34,-3 3,-3c0,0 3,0 3,0c1.66,0 3,1.34 3,3c0,0 0,33 0,33c0,1.66 -1.34,3 -3,3c0,0 -3,0 -3,0c-1.66,0 -3,-1.34 -3,-3c0,0 0,-33 0,-33z" id="svg_11"/>
+   </g>
+  </g>
+ </g>
+</svg>
