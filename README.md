@@ -2,8 +2,15 @@
 
 ### bounce robot
 
+[codepen](https://codepen.io/bluestudyhard/pen/bGQBzge)
 ![Alt text](image-1.png)
 
 ### 立绘
 
 ![Alt text](image.png)
+
+### gradient
+
+[codepen](https://codepen.io/bluestudyhard/pen/zYyxMGY)
+![Alt text](image-2.png)
+![Alt text](image-3.png)

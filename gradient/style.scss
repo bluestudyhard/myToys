@@ -1,0 +1,197 @@
+@property --gradient-percentage {
+    syntax: "<percentage>";
+    initial-value: 0%;
+    inherits: false;
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+// 星星运动函数
+@function multiple-box-shadow($n) {
+    $value: '#{random(2000)}px #{random(2000)}px #FFF';
+
+    @for $i from 2 through $n {
+        $value: '#{$value} , #{random(2000)}px #{random(2000)}px #e8f6fe';
+    }
+
+    @return unquote($value); //不添加""引号
+}
+
+@keyframes animateHold {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+
+        transform: scale(1.2);
+    }
+
+    100% {
+
+        transform: scale(1);
+    }
+}
+
+
+$shadows-small: multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(300);
+$shadows-large: multiple-box-shadow(100);
+
+/* 应用渐变效果并使用自定义属性 */
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    // background: radial-gradient(circle at 40% top, #e3edf7 0%, #e4effbf2 10%, #68c2e09f 40%, #092c41 100%) 灰蓝月亮做顶
+    // background: radial-gradient(circle at 50% 45%, #a6a4a47e 0%, #e1c693c5 30%, #f7cc7bc5 45%, #0d3854 100%); //微光太阳蓝
+    background: repeating-radial-gradient(circle farthest-corner at 50% 20%,
+            rgb(255, 255, 255) var(--gradient-percentage),
+            rgb(53, 50, 94) 50%,
+            rgb(12, 10, 10) 60%,
+            rgba(221, 221, 221, 0.262) 61%) no-repeat;
+    transition: --gradient-percentage 0.8s ease-in-out;
+
+
+    &:hover {
+        --gradient-percentage: 30%;
+    }
+
+    /* 无元素直接用*/
+    // &::before {
+    //     width: 1px;
+    //     height: 1px;
+    //     content: '';
+    //     position: absolute;
+    //     background: transparent;
+    //     box-shadow: $shadows-small;
+    //     animation: animStar 50s linear infinite;
+    // }
+
+    // &::after {
+    //     width: 2px;
+    //     height: 2px;
+    //     content: '';
+    //     position: absolute;
+    //     background: transparent;
+    //     box-shadow: $shadows-medium;
+    //     animation: animStar 50s linear infinite;
+    // }
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container {
+    animation: animateHold 10s ease-in-out infinite;
+}
+
+
+
+
+
+/*
+#82dcffb9
+#e3edf7
+#d9effc9f
+#e1ebf6f2
+#d3e8f49f
+#368bb2d3
+#092c41
+#e1c6939f 40%,太阳微光
+*/
+
+// background: repeating-radial-gradient(circle at 50% 0%, #fafdf8f2 2%, #89ee579f 40%, #0c9cf5 100%) no-repeat, repeating-radial-gradient(circle at 50% 30%, #d5cabef2 2%, #d7e4d19f 40%) no-repeat;// 绿兰菜
+
+
+
+
+
+
+#stars {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+    animation: animStar 50s linear infinite;
+
+}
+
+#stars2 {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+    animation: animStar 100s linear infinite;
+
+
+}
+
+#stars3 {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-large;
+    animation: animStar 150s linear infinite;
+    border-radius: 1rem;
+    border: transparent;
+}
+
+// background: radial-gradient(circle at 40% top, #e3edf7 0%, #e4effbf2 10%, #68c2e09f 40%, #092c41 100%);
+
+// background: radial-gradient(circle at 40% top, #e8eef5 0%, #e4effbf2 10%, #52d2fc9f 40%, #092c41 100%);
+//灰蓝月亮做顶 
+// background: radial-gradient(circle at 0%, #bfc5cb43 0%, #e1c693fb 40%, #1f2e38 100%);
+.header {
+    top: 0;
+    right: 0;
+    position: fixed;
+    ;
+    height: 2rem;
+    width: 5%;
+    background: #9e9e9e4d;
+    transition: all 0.8s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+
+    &:hover {
+        height: 2.5rem;
+
+    }
+
+    .colors {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        :nth-child(1) {
+            background: #52d2fc9f;
+            padding: .2rem .2rem .4rem .4rem;
+
+        }
+
+        :nth-child(2) {
+            background: #e1c693dc;
+            padding: .2rem .2rem .4rem .4rem;
+            margin: .8rem;
+        }
+
+        :nth-child(3) {
+            background: rgb(53, 50, 94);
+            padding: .2rem .2rem .4rem .4rem;
+
+        }
+    }
+}
