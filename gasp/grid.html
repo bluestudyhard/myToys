@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">触发动画</button>
+    <!-- <div class="container">
+
+    </div> -->
+
+</body>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        /* background-color: #dcff7d; */
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(18, 1fr);
+        grid-template-rows: repeat(14, 1fr);
+        /* 每一个格子颜色不同 */
+        grid-template-areas: "a b c" "d e f" "g h i";
+        border: 1px solid #000;
+        transition: all 1s;
+    }
+
+    .item-animation {
+        animation: changeColor ease-in-out forwards;
+
+    }
+
+    @keyframes changeColor {
+
+
+        100% {
+            background-color: #b6d0f1;
+        }
+
+    }
+
+    @keyframes restColor {
+        0% {
+            background-color: #000;
+        }
+
+        100% {
+            background-color: #dcff7d;
+        }
+    }
+</style>
+<script>
+    let flag = false;
+    const container = document.querySelector('.container');
+    const btn = document.querySelector('.btn');
+    // 往container里面插入18*14个div，每一个
+    for (let i = 0; i < 20 * 18; i++) {
+        const div = document.createElement('div');
+        div.classList.add('item');
+
+        div.style.backgroundColor = "#d9d9d901";
+        container.appendChild(div);
+    }
+    // 每一个item设置一个背景颜色动画变化，最终都会变成黑色，但是每一块的时间不同，是一个随机时间
+    const items = document.querySelectorAll('.item');
+
+    // 设置一个动画，让container的背景颜色变化
+    // container.style.animation = `changeColor 10s linear forwards`;
+    // 使用一个按钮触发以上动画
+    function changeColor(isflag) {
+
+        if (isflag) {
+            items.forEach(item => {
+                // item.style.backgroundColor = "#000";
+                item.style.animation = `changeColor  ease-in-out forwards`;
+                item.style.animationDelay = `${Math.random() * 0.5}s`;
+                // item.style.transition = "ease-in-out 1s";
+            })
+
+            // container.style.animation = `changeColor 10s linear forwards`;
+        }
+        else {
+            items.forEach(item => {
+                item.style.animation = "none";
+                // item.style.backgroundColor = "#fff";
+                item.style.transition = "ease-in-out 1s";
+            })
+            container.style.animation = "none";
+        }
+
+    }
+    btn.addEventListener('click', () => {
+        flag = !flag
+        console.log(flag)
+        changeColor(flag);
+    })
+</script>
+
+</html>

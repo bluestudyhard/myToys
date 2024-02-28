@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        height: 1000px;
+
+    }
+
+    video {
+        width: 100%;
+        height: 100vh;
+        transition: .3s all ease-in-out;
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <video loop="true" autoplay="true">
+            <source src="shader.mp4" type="video/mp4">
+        </video>
+    </div>
+</body>
+<!-- <script>
+    // 获取视频元素
+    const video = document.querySelector('video');
+    let isScrolling;
+    const currentTime = video.currentTime;
+    console.log(currentTime);
+    // 监听scroll事件
+    window.addEventListener('scroll', function () {
+        // 清除之前设置的延迟执行
+        window.clearTimeout(isScrolling);
+
+        // 设置延迟执行停止视频播放的操作
+        isScrolling = setTimeout(function () {
+            // 获取滚动的距离
+            const scrollTop = window.scrollY;
+            // 计算视频播放的时间
+            const videoDuration = 5;  // 视频总时长为5s
+            const scrollDistance = 1000;  // 视频播放的总距离为1000px
+            // 计算视频播放的时间
+            const playTime = (scrollTop / scrollDistance) * videoDuration;  // 根据滚动的距离计算播放时间
+
+            // 控制视频的播放
+            video.currentTime = playTime;
+        }, 150);  // 设置延迟时间，确保在滚动停止后才停止视频的播放
+    });
+</script> -->
+
+</html>

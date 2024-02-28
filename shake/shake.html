@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test SHAKE</title>
+</head>
+
+<body>
+    <div>
+        <button class="base-btn">点击摇晃</button>
+        <div class="box">
+
+        </div>
+        <!-- 导航菜单 -->
+        <ul>
+            <li><a href="#section1">Section 1</a></li>
+            <li><a href="#section2">Section 2</a></li>
+            <li><a href="#section3">Section 3</a></li>
+        </ul>
+
+        <!-- 页面内容 -->
+        <div class="contain">
+            <div id="section1">Section 1</div>
+            <div id="section2">Section 2</div>
+            <div id="section3">Section 3</div>
+        </div>
+
+    </div>
+</body>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .contain {
+        position: absolute;
+        bottom: 0;
+    }
+
+    body {
+        height: 3000px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        background-color: #ffffff;
+        font-family: Roboto, sans-serif;
+    }
+
+    .box {
+        /* width: 20rem;
+        height: 20rem; */
+        padding: 3rem;
+        background: #a0f0c0;
+        font-size: 1rem;
+        border-radius: 3px;
+        /* box-shadow: 3px 3px #555; */
+
+        &:hover {
+            background: #f0a0d0;
+            box-shadow: 3px 3px #333;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        /* animation: shake 1s; */
+    }
+
+    .base-btn {
+        padding: 1rem 1rem;
+        background-color: antiquewhite;
+        outline: none;
+        border: none;
+    }
+
+    .shake {
+        animation: shake 1s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+    }
+
+    @keyframes shake {
+
+        0% {
+            scale: 1.2;
+        }
+
+        50% {
+            scale: 1;
+        }
+
+        /* //表示在百分之10和90时都会往左边抽一下 */
+        10%,
+        90% {
+            transform: translate3d(-1px, 0, 0);
+        }
+
+        20%,
+        80% {
+            transform: translate3d(2px, 0, 0);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: translate3d(-2px, 0, 0);
+        }
+
+        40%,
+        60% {
+            transform: translate3d(2px, 0, 0);
+        }
+
+    }
+</style>
+<script>
+    const btn = document.querySelector('.base-btn');
+    const box = document.querySelector('.box');
+    btn.addEventListener('click', () => {
+        box.classList.add('shake');
+        setTimeout(() => {
+            box.classList.remove('shake');
+        }, 2000);
+    })
+</script>
+
+</html>

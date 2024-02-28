@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <img src="miao.jpg" alt="" class="image"> -->
+        <canvas class="canvas" width="1000" height="1000">
+
+        </canvas>
+</body>
+
+<script>
+    // 图片转canvas
+    const canvas = document.querySelector('.canvas');
+    const ctx = canvas.getContext('2d');
+    const image = new Image();
+    image.src = 'miao.jpg';
+
+    image.onload = function () {
+        ctx.drawImage(image, 0, 0); // 将图片绘制到Canvas上
+    };
+    let x = 0; // 图片的初始x坐标
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 清除Canvas上的内容
+        ctx.drawImage(image, x, 0); // 绘制图片
+
+        // scale图片，然后旋转,重复执行
+        ctx.save(); // 保存当前的绘制状态
+        ctx.translate(image.width / 2, image.height / 2); // 将坐标原点移动到图片的中心
+        ctx.scale(1.1,1.1); // 缩放图片
+        ctx.rotate((Math.PI / 180) * 10); // 旋转图片
+        ctx.drawImage(image, -image.width / 2, -image.height / 2); // 绘制图片
+        ctx.restore(); // 恢复之前保存的绘制状态
+        // 重复执行
+        // x += 1; // 每次移动1px
+        // if (x > canvas.width) {
+        //     x = 0;
+        // }
+
+        requestAnimationFrame(animate);
+        // 递归调用animate函数，实现动画效果
+
+    }
+
+    animate(); // 开始动画
+</script>
+
+</html>

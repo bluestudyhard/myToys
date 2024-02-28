@@ -1,0 +1,92 @@
+@keyframes animaStars {
+    from {
+        transform: translateY(0px);
+
+    }
+
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+@keyframes animaStars1 {
+    0% {
+        scale: 1.0;
+
+    }
+
+    50% {
+        scale: 1.1;
+    }
+
+    100% {
+        scale: 1.0;
+    }
+}
+
+
+
+/*星星运动函数 本质上是利用了box-shadow*/
+@function moving-stars($n) {
+    $value:'#{random(2000)}px #{random(2000)}px #fff';
+
+    @for $i from 2 through $n {
+        $value: '#{$value}, #{random(2000)}px #{random(2000)}px #fff';
+    }
+
+    @return unquote($value);
+}
+
+$shadows-small:moving-stars(700);
+$shadows-medium:moving-stars(300);
+$shadows-large:moving-stars(100);
+
+@property --gradient-percentage {
+    syntax: '<percentage>';
+    initial-value: 0%;
+    inherits: false;
+}
+
+body {
+    width: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    background: repeating-radial-gradient(circle at 50% 20%,
+            #fff var(--gradient-percentage), #35325E 50%,
+            #0C0A0A 60%,
+            #DDDDDD42 61%) no-repeat;
+    transition: --gradient-percentage 0.8s ease-in-out;
+    animation: animaStars1 10s ease-in-out infinite;
+
+    &:hover {
+        --gradient-percentage: 30%;
+    }
+}
+
+#stars {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    background: transparent;
+    box-shadow: $shadows-small;
+    animation: animaStars 50s linear infinite;
+}
+
+#stars2 {
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    background: transparent;
+    box-shadow: $shadows-medium;
+    animation: animaStars 100s linear infinite;
+}
+
+#stars3 {
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: transparent;
+    box-shadow: $shadows-large;
+    animation: animaStars 150s linear infinite;
+    border-radius: 1rem;
+}

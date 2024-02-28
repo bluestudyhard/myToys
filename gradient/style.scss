@@ -52,13 +52,13 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    // background: radial-gradient(circle at 40% top, #e3edf7 0%, #e4effbf2 10%, #68c2e09f 40%, #092c41 100%) 灰蓝月亮做顶
-    // background: radial-gradient(circle at 50% 45%, #a6a4a47e 0%, #e1c693c5 30%, #f7cc7bc5 45%, #0d3854 100%); //微光太阳蓝
-    background: repeating-radial-gradient(circle farthest-corner at 50% 20%,
-            rgb(255, 255, 255) var(--gradient-percentage),
-            rgb(53, 50, 94) 50%,
-            rgb(12, 10, 10) 60%,
-            rgba(221, 221, 221, 0.262) 61%) no-repeat;
+    // background: radial-gradient(circle at 40% top, #e3edf7 0%, #e4effbf2 10%, #68c2e09f 40%, #092c41 100%); // 灰蓝月亮做顶
+    background: radial-gradient(circle at 50% 45%, #a6a4a47e 0%, #f5d08bc5 30%, #f7cc7bc5 40%, #d4b170c5 45%, #0d3854 100%); //微光太阳蓝
+    // background: repeating-radial-gradient(circle farthest-corner at 50% 20%,
+    //         rgb(255, 255, 255) var(--gradient-percentage),
+    //         rgb(53, 50, 94) 50%,
+    //         rgb(12, 10, 10) 60%,
+    //         rgba(221, 221, 221, 0.262) 61%) no-repeat;
     transition: --gradient-percentage 0.8s ease-in-out;
 
 
@@ -92,9 +92,9 @@ body {
     overflow: hidden;
 }
 
-.container {
-    animation: animateHold 10s ease-in-out infinite;
-}
+// .container {
+//     animation: animateHold 10s ease-in-out infinite;
+// }
 
 
 

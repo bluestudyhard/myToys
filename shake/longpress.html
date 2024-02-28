@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="stage">
+        <h3>press &amp; hold</h3>
+        <div class="app"></div>
+    </div>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+    @import url('https://fonts.googleapis.com/css?family=Poppins:300,500');
+
+
+
+    html {
+        height: 100vh;
+        width: 100vw;
+        background: linear-gradient(65deg, rgba(18, 9, 35, 0.99) 0%, rgba(171, 189, 115, 0.51) 100%) no-repeat;
+    }
+
+    body {
+        display: flex;
+        height: 100%;
+        font-family: Heebo;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: rgba(5, 185, 156, 0.25);
+        padding: 0 25px;
+    }
+
+    .stage {
+        justify-content: center;
+        position: relative;
+        top: -25px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h3 {
+        color: white;
+        text-align: center;
+
+    }
+
+    .app {
+        display: block;
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 40px;
+        background: #e0e0e0 no-repeat center;
+        background-image: url(http://fillmurray.com/200/200);
+        background-size: 209px 206px;
+        z-index: 0;
+        box-shadow: 0 2px 5px -1px rgba(0, 0, 0, .5);
+        transform: scale(1);
+        opacity: 1;
+        user-select: none;
+        transition: all 50ms ease-in-out;
+
+        &:active {
+            box-shadow: inset 0 0 0px 200px rgba(0, 0, 0, .25);
+        }
+
+        &.animated {
+            box-shadow: 0 15px 25px -10px rgba(0, 0, 0, .5);
+        }
+
+        &.deleted {
+            transform: scale(.25);
+            opacity: 0;
+        }
+    }
+
+    .close {
+        display: flex;
+        opacity: 0;
+        transform: translateY(-15px) scale(.75);
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        font-size: 36px;
+        color: tomato;
+        left: -12%;
+        top: -12%;
+        width: 60px;
+        height: 60px;
+        background: rgba(225, 225, 225, 1);
+        border-radius: 50%;
+        transition: all 50ms ease-in-out;
+        user-select: none;
+        box-shadow: 2px 2px 2px -2px rgba(0, 0, 0, .35);
+        z-index: 2;
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        position: fixed;
+        top: 50%;
+        left: auto;
+        height: 40px;
+        width: 130px;
+        border-radius: 5px;
+        background: rgb(50, 63, 76);
+        border: none;
+        color: white;
+        letter-spacing: 1px;
+        font-weight: 300;
+        font-size: 14px;
+        box-shadow: 0 2px 5px -1px rgba(0, 0, 0, .5);
+        transition: all 50ms ease-in-out;
+
+        i {
+            margin-right: 8px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            box-shadow: 0 1px 2px -1px rgba(0, 0, 0, .5), inset 0 0 15px 0px rgba(255, 255, 255, .1);
+        }
+    }
+
+    .animated {
+        animation-name: wiggle;
+        animation-duration: 200ms;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes wiggle {
+        from {
+            transform: rotate3d(0, 0, 1, 0deg);
+        }
+
+        20% {
+            transform: rotate3d(0, 0, 1, -1deg);
+        }
+
+        40% {
+            transform: rotate3d(0, 0, 1, 0deg);
+        }
+
+        60% {
+            transform: rotate3d(0, 0, 1, 1deg);
+        }
+
+        80% {
+            transform: rotate3d(0, 0, 1, 0deg);
+        }
+
+        to {
+            transform: rotate3d(0, 0, 1, -1deg)
+        }
+    }
+</style>
+<script>
+    var app = $('.app'),
+        reset,
+        pressTimer,
+        vanishTimer,
+        deleteOption;
+
+    app.on('mousedown', pressToDelete);
+    app.on('mouseup', resetPressTimer);
+
+    function pressToDelete(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        // stop if app itself is touched again
+        if (e.target === e.currentTarget) {
+            if ($('.close').length > 0) {
+                cancelDelete();
+                deleteOption = false;
+            }
+            pressTimer = setTimeout(longPress, 1000);
+        }
+        // delete app when x-badge is targeted
+        else if (e.target !== e.currentTarget) {
+            app.removeClass('animated');
+            vanishTimer = setTimeout(vanish, 100);
+        }
+        // createX
+    }
+
+    function longPress() {
+        deleteOption = true;
+        app.addClass('animated');
+        createX();
+        $('h3')[0].innerHTML = "delete?";
+    }
+
+    function createX() {
+        app.append('<i class="close material-icons">clear</i>');
+        setTimeout(function () {
+            $('.close').css({
+                'opacity': '1',
+                'transform': 'translateY(0px) scale(1)'
+            });
+        }, 50);
+    }
+
+    function cancelDelete() {
+        $('.close').detach();
+        app.removeClass('animated');
+        $('h3')[0].innerHTML = "press & hold";
+    }
+
+    function vanish() {
+        $('.close').detach();
+        app.addClass('deleted');
+        $('h3')[0].innerHTML = "app removed";
+        createResetBtn();
+    }
+
+    function resetPressTimer(e) {
+        e.preventDefault();
+        if (pressTimer) {
+            clearTimeout(pressTimer);
+        }
+    }
+
+    function createResetBtn() {
+        let $resetButton = "<button class='reset' type='button'><i class='material-icons'>restore</i><span>Restore</span></button>";
+        setTimeout(function () {
+            app.after($resetButton);
+            reset = $('.reset');
+            reset.fadeTo('fast', '1');
+            reset.on('click', resetApp);
+        }, 250);
+    }
+
+    function resetApp() {
+        app.removeClass('deleted');
+        reset.remove();
+        $('h3')[0].innerHTML = "press & hold";
+    }
+
+</script>
+
+</html>

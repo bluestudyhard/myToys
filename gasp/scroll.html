@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test gasp scroll</title>
+
+</head>
+<style>
+    .box {
+        width: 10rem;
+        height: 10rem;
+        background-color: rgb(92, 170, 243);
+        margin: 10px;
+    }
+
+    .box:nth-child(2) {
+        background-color: rgb(243, 92, 92);
+    }
+
+    .box:nth-child(3) {
+        background-color: rgb(243, 92, 243);
+    }
+</style>
+
+<body>
+    <div class="box a">a</div>
+    <div class="box b">b</div>
+    <div class="box c">c</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+<script>
+
+    gasp.registerPlugin(ScrollTrigger);
+    gsap.to(".c", {
+        ScrollTrigger: ".c",
+        x: 400,
+        rotation: 360,
+        duration: 2,
+    });
+</script>
+
+</html>

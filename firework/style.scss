@@ -1,0 +1,83 @@
+html,
+body {
+  height: 100%;
+}
+* {
+  pointer-events: none;
+}
+
+body {
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  background-image: linear-gradient(-225deg, #7de2fc 0%, #b9b6e5 100%);
+}
+
+.intro {
+  font-family: "futura", "helvetica", sans-serif;
+  // text-transform: uppercase;
+  color: #fafafa;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+  transition: opacity 2s;
+  &.bye {
+    opacity: 0;
+  }
+}
+
+#canvas {
+  // background: radial-gradient(transparent 40%, rgba(0,0,0,0.05));
+  // background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  // background-image: linear-gradient(-225deg, #7DE2FC 0%, #B9B6E5 100%);
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.tada {
+  font-size: 10px;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  // width: 100%;
+  width: 10em;
+  text-align: center;
+  pointer-events: none;
+  transform-origin: 6.25% 93.75%;
+  transform: translateX(0) translateY(0%) rotate(-45deg);
+  // transform-origin: 0% 0%;
+  // transform: translateX(0) translateY(62.5%) rotate(-45deg);
+  img {
+    width: 100%;
+    transform: translateX(-40%) translateY(40%);
+  }
+}
+
+.shake {
+  animation: shake 0.1s linear infinite;
+  font-size: 10px;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(-5px);
+  }
+}
